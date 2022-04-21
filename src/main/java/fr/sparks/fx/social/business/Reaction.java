@@ -15,6 +15,6 @@ public class Reaction {
     private Utilisateur utilisateur;
     @ManyToOne
     private Emotion emotion;
-    @OneToMany(mappedBy = "reaction")
-    private Collection<Gif> gifs;
+    @ManyToOne
+    private Gif gif;
 }

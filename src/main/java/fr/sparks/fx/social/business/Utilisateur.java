@@ -15,7 +15,7 @@ public class Utilisateur {
     private String nom;
     @Column(length = 30)
     private String prenom;
-    @Column(unique = true)
+    //@Column(unique = true)
     private String email;
     private String motDePasse;
     private int nbPoints;

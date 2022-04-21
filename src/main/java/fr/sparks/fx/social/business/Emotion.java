@@ -21,6 +21,9 @@ public class Emotion {
         this.code = code;
     }
 
+    public Emotion() {
+    }
+
     public Long getId() {
         return id;
     }
