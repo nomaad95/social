@@ -87,6 +87,7 @@ public class AjoutDoneeInitiale implements CommandLineRunner {
         System.out.println(jourDAO.finDaysOfCurrentMonth());
         System.out.println(iEmotionDAO.findNameStartingWithS());
         System.out.println(iUtilisateurDAO.findUtilisateurWithSpecificTheme("Batchata"));
+        System.out.println(iUtilisateurDAO.findNbInscrits());
 
 
     }
