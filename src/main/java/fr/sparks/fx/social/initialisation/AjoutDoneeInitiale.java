@@ -92,8 +92,8 @@ public class AjoutDoneeInitiale implements CommandLineRunner {
         System.out.println(iEmotionDAO.findNameStartingWithS());
         System.out.println(iUtilisateurDAO.findUtilisateurWithSpecificTheme("Batchata"));
         System.out.println(iUtilisateurDAO.findNbInscrits());
-        iUtilisateurDAO.findByDateHeureInscriptionBetween(LocalDateTime.of(2022,2,2,0,0,0), PageRequest.of(0,20), LocalDateTime.now()).getContent().forEach(System.out::println);
-        iUtilisateurDAO.findByDateHeureInscriptionBetween(LocalDateTime.of(2022,2,2,0,0,0), PageRequest.of(1,20).withSort(Sort.by("nom")), LocalDateTime.now()).getContent().forEach(System.out::println);
+        iUtilisateurDAO.findByDateHeureInscriptionBetween(LocalDateTime.of(2022,2,2,0,0,0), PageRequest.of(0,20).withSort(Sort.by("nom")), LocalDateTime.now()).getContent().forEach(System.out::println);
+        iUtilisateurDAO.findByDateHeureInscriptionBetween(LocalDateTime.of(2022,2,2,0,0,0), PageRequest.of(1,20).withSort(Sort.by(Sort.Direction.DESC,"nom")), LocalDateTime.now()).getContent().forEach(System.out::println);
 
 
     }

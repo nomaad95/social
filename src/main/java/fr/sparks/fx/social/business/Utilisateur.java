@@ -107,4 +107,12 @@ public class Utilisateur {
     public void setAbonnements(Collection<Abonnement> abonnements) {
         this.abonnements = abonnements;
     }
+
+    @Override
+    public String toString() {
+        return "Utilisateur{" +
+                "prenom=" + prenom +
+                ", nom=" + nom +
+                '}';
+    }
 }
