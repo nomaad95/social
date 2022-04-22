@@ -2,10 +2,13 @@ package fr.sparks.fx.social.dao;
 
 import fr.sparks.fx.social.business.Utilisateur;
 import fr.sparks.fx.social.util.NbInscrits;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface IUtilisateurDAO extends JpaRepository<Utilisateur, Long> {
@@ -27,5 +30,15 @@ public interface IUtilisateurDAO extends JpaRepository<Utilisateur, Long> {
             "month(utilisateur.dateHeureInscription) " +
             "ORDER BY year(utilisateur.dateHeureInscription) desc, month(utilisateur.dateHeureInscription)")
     List<NbInscrits> findNbInscrits();
+
+    /**
+     * Methode qui renvoie une page d'utilisateurs s'étant inscrits entre les deux dates données en paramètre
+     *
+     * @param dateHeureDebut
+     * @param dateHeureFin
+     * @param pageable
+     * @return
+     */
+    Page<Utilisateur> findByDateHeureInscriptionBetween(LocalDateTime dateHeureDebut, Pageable pageable, LocalDateTime dateHeureFin);
 
 }

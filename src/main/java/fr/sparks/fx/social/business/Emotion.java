@@ -7,7 +7,7 @@ import java.util.Collection;
 public class Emotion {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     private String nom;
     private String code;

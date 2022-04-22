@@ -8,7 +8,7 @@ import java.util.Collection;
 public class Utilisateur {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     //@Transactional(readOnly = true)
     private static final int NB_POINTS_INITIAL = 500;

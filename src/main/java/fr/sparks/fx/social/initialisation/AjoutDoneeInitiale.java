@@ -12,8 +12,12 @@ import fr.sparks.fx.social.dao.IThemeDAO;
 import fr.sparks.fx.social.dao.IUtilisateurDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.*;
 
@@ -59,7 +63,7 @@ public class AjoutDoneeInitiale implements CommandLineRunner {
             FakeValuesService fakeValuesService = new FakeValuesService(new Locale("fr-FR"), new RandomService());
             Faker faker = new Faker(new Locale("fr-FR"));
             List<Theme> themes = themeDAO.findAll();
-            for(int i=0; i < 10; i++){
+            for(int i=0; i < 10000; i++){
                 Utilisateur utilisateur = new Utilisateur();
                 utilisateur.setNom(faker.name().lastName());
                 utilisateur.setPrenom(faker.name().firstName());
@@ -88,6 +92,8 @@ public class AjoutDoneeInitiale implements CommandLineRunner {
         System.out.println(iEmotionDAO.findNameStartingWithS());
         System.out.println(iUtilisateurDAO.findUtilisateurWithSpecificTheme("Batchata"));
         System.out.println(iUtilisateurDAO.findNbInscrits());
+        iUtilisateurDAO.findByDateHeureInscriptionBetween(LocalDateTime.of(2022,2,2,0,0,0), PageRequest.of(0,20), LocalDateTime.now()).getContent().forEach(System.out::println);
+        iUtilisateurDAO.findByDateHeureInscriptionBetween(LocalDateTime.of(2022,2,2,0,0,0), PageRequest.of(1,20).withSort(Sort.by("nom")), LocalDateTime.now()).getContent().forEach(System.out::println);
 
 
     }
